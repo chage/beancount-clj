@@ -1,0 +1,16 @@
+{:paths ["src" "resources" "config"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.3"}
+        clj-python/libpython-clj {:mvn/version "2.024"}
+        metosin/malli {:mvn/version "0.16.3"}
+        tick/tick {:mvn/version "0.6.2"}}
+ :aliases
+ {:common {:jvm-opts ["--add-modules" "jdk.incubator.foreign,jdk.incubator.vector"
+                      "--enable-native-access=ALL-UNNAMED"]}
+  :run {:main-opts ["-m"]}
+  :dev {:extra-deps {org.clojure/tools.namespace {:mvn/version "1.4.2"}}
+        :ns-default beancount.core}
+  :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "1.0.0"}
+                       com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
+          :main-opts ["-m" "nrepl.cmdline"
+                      "--interactive"
+                      "-f" "rebel-readline.main/-main"]}}}
