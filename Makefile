@@ -7,6 +7,3 @@ env:
 
 dev: env
 	clojure -M:common:dev:nrepl
-
-start: env
-	clojure -M:common -m server
