@@ -1,0 +1,24 @@
+name: beancount-clj
+
+services:
+  beancount-clj:
+    container_name: "beancount-clj"
+    build:
+      context: .
+      args:
+        USER_ID: ${HOST_UID:-1000}
+        GROUP_ID: ${HOST_GID:-1000}
+        USER_NAME: ${HOST_UNAME:-hostuser}
+        GROUP_NAME: ${HOST_GNAME:-hostgroup}
+    ports:
+      - "127.0.0.1:3002:3002"
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    working_dir: "/app/beancount-clj"
+    command: /bin/bash -c 'make dev ARGS="-b 0.0.0.0"'
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./:/app/beancount-clj
+      - ~/.m2:/app/.m2
+    tty: true
+    stdin_open: true
+

@@ -13,4 +13,5 @@
                        com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
           :main-opts ["-m" "nrepl.cmdline"
                       "--interactive"
-                      "-f" "rebel-readline.main/-main"]}}}
+                      "-f" "rebel-readline.main/-main"
+                      "-p" "3002"]}}}
