@@ -13,12 +13,27 @@ This project initially aimed to port [Beancount](https://github.com/beancount/be
 
 ### Python
 
+Use `venv` or `uv`.
+
+#### Use venv
+
 Currently you need to run under Python `venv`. And remember to install `beancount`.
 
 ```
-$ python -m venv venv
-$ . venv/bin/activate
-(venv) $ pip install beancount
+$ python -m venv .venv
+$ . ./venv/bin/activate
+(.venv) $ pip install beancount
+(.venv) $ make dev
+```
+
+#### Use uv
+
+Use `uv` as project manager.
+
+```
+$ uv sync
+$ source .venv/bin/activate
+(beancount-clj) $ make dev
 ```
 
 ### Java 17 Requirement
@@ -29,7 +44,7 @@ $ . venv/bin/activate
 
 Remove Python dependency
 
-## Developing in the container
+## Optional: Developing in the container
 
 This project currently relies on Python and OpenJDK. Since my local development environment is frequently affected by system package updates, I decided to create a Docker container to isolate the environment and ensure it only changes when absolutely needed.
 
@@ -44,4 +59,6 @@ $ make docker-down
 
 The container maps the timezone file and the `~/.m2` folder. The user root in container is `/app`, and project root in container is `/app/beancount-clj`.
 The container exposes REPL at `0.0.0.0:3002` for interactive development and debugging.
+
+UPDATED: I was advised to use `uv` to resolve this versioning issue. Please see above. But I’ve kept the Docker setup, just in case someone needs it.
 

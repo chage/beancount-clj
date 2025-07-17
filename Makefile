@@ -7,11 +7,11 @@ HOST_UNAME := $(shell whoami)
 HOST_GNAME := $(shell id -gn)
 
 env:
-	@echo "Please run . venv/bin/activate first."
+	@echo "Please sync env first..."
 	@echo "====================================="
-	@echo "python -m venv venv"
-	@echo ". venv/bin/activate"
-	@echo "pip install beancount"
+	@echo "$$ uv sync"
+	@echo "$$ source venv/bin/activate"
+	@echo "====================================="
 
 dev: env
 	clojure -M:common:dev:nrepl $(ARGS)
