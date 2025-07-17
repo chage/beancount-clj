@@ -8,3 +8,15 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Clojure-generated files
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/lib/
+/classes/
+/target/
+/checkouts/
+.nrepl-port
+.cpcache/
